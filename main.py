@@ -5,9 +5,16 @@ Team Members: Cesar Carballo, Jinghan Wu
 def encode(password):
     encoded_password = ""
     for char in password:
-        char = int(char)
-        char += 3
-        encoded_password += str(char)
+        if char == "7":
+            encoded_password += "0"
+        if char == "8":
+            encoded_password += "1"
+        if char == "9":
+            encoded_password += "2"
+        if (char != "7") and (char != "8") and (char != "9"):
+            char = int(char)
+            char += 3
+            encoded_password += str(char)
     return encoded_password
 
 def decode(encoded_password):
@@ -23,27 +30,27 @@ def decode(encoded_password):
 
 if __name__ == "__main__":
     while True:
-        print("Password Changer Menu Options:")
+        print("Menu")
+        print("-------------")
         print("1. Encode")
         print("2. Decode")
         print("3. Exit")
         print(" ")
-        choice = input("Please Select a Menu Option: ")
-        print(" ")
+        choice = input("PLease enter an option: ")
         if (choice != "1") and (choice != "2") and (choice != "3"):
             print("Invalid Menu option Please select again: ")
             choice = input("Please Select a Menu Option: ")
         if choice == "1":
-            password = input("Please Enter a Numeric Password to Encode: ")
+            password = input("Please enter your password to encode: ")
             password = encode(password)
-            print("Encoded Password is: ", password)
+            print("Your password has been encoded and stored!")
             print(" ")
         if choice == "2":
             decoded_password = decode(password)
             print(f"The encoded password is {password}, "
                   f"and the original password is {decoded_password}.")
+            print(" ")
         if choice == "3":
-            print("Thank you for USing Password Changer")
             break
 
 
